@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultra Design Login</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #121212;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 400px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      padding: 40px 30px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+      position: relative;
+      z-index: 10;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .logo {
+    margin: 0 auto 30px;
+    width: 120px;
+    height: 120px;
+    background: url(logo.jpg) center center no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+    .logo::before {
+      position: absolute;
+      color: #8B4513;
+      font-weight: 700;
+      font-size: 24px;
+      text-shadow: 0 0 10px rgba(139, 69, 19, 0.7);
+    }
+
+    .logo::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(90deg, transparent, #8B4513, transparent);
+      animation: scan 2s linear infinite;
+    }
+
+    @keyframes scan {
+      0% {
+        transform: translateY(-50px);
+      }
+      100% {
+        transform: translateY(120px);
+      }
+    }
+
+    .form-title {
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 15px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .input-group input:focus {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(139, 69, 19, 0.5);
+      box-shadow: 0 0 15px rgba(139, 69, 19, 0.3);
+    }
+
+    .input-group label {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      color: #aaa;
+      font-size: 16px;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .input-group input:focus ~ label,
+    .input-group input:valid ~ label {
+      top: -12px;
+      left: 15px;
+      font-size: 12px;
+      background: #121212;
+      padding: 0 5px;
+      color: #8B4513;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(145deg, #8B4513, #5a2d0c);
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 25px rgba(139, 69, 19, 0.3);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .animated-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .animated-bg span {
+      position: absolute;
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: rgba(139, 69, 19, 0.2);
+      animation: animate 25s linear infinite;
+      bottom: -150px;
+      border-radius: 50%;
+    }
+
+    .animated-bg span:nth-child(1) {
+      left: 25%;
+      width: 80px;
+      height: 80px;
+      animation-delay: 0s;
+    }
+
+    .animated-bg span:nth-child(2) {
+      left: 10%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 2s;
+      animation-duration: 12s;
+    }
+
+    .animated-bg span:nth-child(3) {
+      left: 70%;
+      width: 30px;
+      height: 30px;
+      animation-delay: 4s;
+    }
+
+    .animated-bg span:nth-child(4) {
+      left: 40%;
+      width: 60px;
+      height: 60px;
+      animation-delay: 0s;
+      animation-duration: 18s;
+    }
+
+    .animated-bg span:nth-child(5) {
+      left: 65%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 0s;
+    }
+
+    .animated-bg span:nth-child(6) {
+      left: 75%;
+      width: 110px;
+      height: 110px;
+      animation-delay: 3s;
+    }
+
+    .animated-bg span:nth-child(7) {
+      left: 35%;
+      width: 50px;
+      height: 50px;
+      animation-delay: 7s;
+    }
+
+    .animated-bg span:nth-child(8) {
+      left: 50%;
+      width: 25px;
+      height: 25px;
+      animation-delay: 15s;
+      animation-duration: 45s;
+    }
+
+    .animated-bg span:nth-child(9) {
+      left: 20%;
+      width: 15px;
+      height: 15px;
+      animation-delay: 2s;
+      animation-duration: 35s;
+    }
+
+    .animated-bg span:nth-child(10) {
+      left: 85%;
+      width: 45px;
+      height: 45px;
+      animation-delay: 0s;
+      animation-duration: 11s;
+    }
+
+    @keyframes animate {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    
+    @media (max-width: 768px) {
+      .container {
+        width: 85%;
+        padding: 30px 20px;
+      }
+      
+      .logo {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .form-title {
+        font-size: 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: 90%;
+        padding: 25px 15px;
+      }
+      
+      .logo {
+        width: 80px;
+        height: 80px;
+      }
+      
+      .logo::before {
+        font-size: 18px;
+      }
+      
+      .form-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+      
+      .input-group {
+        margin-bottom: 20px;
+      }
+      
+      .input-group input {
+        padding: 12px 15px;
+        font-size: 14px;
+      }
+      
+      .input-group label {
+        font-size: 14px;
+      }
+      
+      .btn {
+        padding: 12px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="animated-bg">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="container">
+    <div class="logo"></div>
+    <h1 class="form-title">LOGIN</h1>
+    <form id="loginForm">
+      <div class="input-group">
+        <input type="text" id="email" required>
+        <label for="email">Username/Email</label>
+      </div>
+      <div class="input-group">
+        <input type="password" id="password" required>
+        <label for="password">Password</label>
+      </div>
+      <button type="submit" class="btn">LOGIN</button>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loginForm = document.getElementById('loginForm');
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+
+      
+      const validCredentials = {
+        "admin@ultra.com": "12345",
+        "Admin": "12345"  
+      };
+
+      loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const email = emailInput.value.trim();
+        const password = passwordInput.value;
+        
+       
+        if (validCredentials[email] === password) {
+           
+          console.log('Login successful!');
+          alert('Login successful! Redirecting to menu...');
+          
+          
+          sessionStorage.setItem('userEmail', email);
+          
+          
+          setTimeout(function() {
+            window.location.href = 'menu.html';
+          }, 1000);   
+        } else {
+          
+          alert('Invalid email or password. Try using Admin with password 12345');
+        }
+      });
+      
+      
+      const inputs = document.querySelectorAll('.input-group input');
+      inputs.forEach(input => {
+        input.addEventListener('focus', function() {
+          this.parentElement.classList.add('focus');
+        });
+        
+        input.addEventListener('blur', function() {
+          this.parentElement.classList.remove('focus');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
