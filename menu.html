@@ -3,1014 +3,1232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Municipality of Molave - Zamboanga Del Sur</title>
+    <title>Molave | Progressive Municipality of Zamboanga del Sur</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        
         :root {
-            --primary-color: #8B4513; /* Brown */
-            --secondary-color: #5E2C04; /* Darker Brown */
-            --text-color: #333333; /* Almost Black */
-            --light-color: #F5F5DC; /* Beige */
-            --accent-color: #D2B48C; /* Tan */
+            --primary-gradient: linear-gradient(135deg, #2E8B57 0%, #228B22 100%);
+            --secondary-gradient: linear-gradient(135deg, #4682B4 0%, #1E90FF 100%);
+            --accent-color: #FF6B35;
+            --dark-green: #1B5E20;
+            --light-green: #81C784;
+            --cream-white: #FFFEF7;
+            --soft-gray: #F8F9FA;
+            --text-dark: #2C3E50;
+            --text-light: #6C757D;
+            --shadow-soft: 0 10px 40px rgba(0,0,0,0.1);
+            --shadow-hover: 0 20px 60px rgba(0,0,0,0.15);
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background-color: #f8f8f8;
-            color: var(--text-color);
-            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--cream-white);
+            overflow-x: hidden;
         }
         
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
         
-       
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 15px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        ::-webkit-scrollbar-track {
+            background: var(--soft-gray);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-gradient);
+            border-radius: 10px;
+        }
+        
+        /* Navigation */
+        .navbar {
             position: fixed;
-            width: 100%;
             top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
             z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(46, 139, 87, 0.1);
         }
         
-        .header-container {
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         
-        .logo-container {
+        .logo-section {
             display: flex;
             align-items: center;
+            gap: 1rem;
         }
         
-        .logo {
-            width: 60px;
-            height: 60px;
-            margin-right: 15px;
+        .logo-circle {
+            width: 55px;
+            height: 55px;
+            background: var(--primary-gradient);
             border-radius: 50%;
-            border: 2px solid white;
-            overflow: hidden;
-            background-color: white;
-        }
-        
-        .logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
-        .site-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        
-        .site-subtitle {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-        
-        /* Navigation */
-        nav {
-            background-color: var(--secondary-color);
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-        }
-        
-        .nav-links {
-            display: none;
-            list-style: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background-color: var(--secondary-color);
-            width: 250px;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-            z-index: 999;
-            flex-direction: column;
-        }
-        
-        .nav-links.active {
-            display: flex;
-        }
-        
-        .nav-links li {
-            position: relative;
-            transition: background-color 0.3s;
-            width: 100%;
-        }
-        
-        .nav-links li a {
-            color: white;
-            text-decoration: none;
-            padding: 15px 20px;
-            display: block;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-        
-        .nav-links li:hover {
-            background-color: var(--primary-color);
-        }
-        
-        .nav-links li:hover a {
-            transform: translateY(-3px);
-        }
-        
-        .hamburger {
-            display: block;
-            cursor: pointer;
-            padding: 15px;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            z-index: 1000;
-        }
-        
-       
-        .hero {
-            height: 80vh;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(Municipality.jpg);
-            background-size: cover;
-            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            text-align: center;
-            margin-top: 106px;
-            position: relative;
-            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.3s ease;
         }
         
-        .hero-content {
-            max-width: 800px;
-            padding: 20px;
-            z-index: 1;
-            animation: fadeIn 1.5s ease-in-out;
+        .logo-circle:hover {
+            transform: rotate(360deg) scale(1.1);
         }
         
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-        
-        .hero-btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-        
-        .hero-btn:hover {
-            background-color: transparent;
-            border: 2px solid white;
-            transform: translateY(-3px);
-        }
-        
-        /* Sections */
-        section {
-            padding: 60px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            color: var(--primary-color);
-            position: relative;
-        }
-        
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary-color);
-            margin: 15px auto;
-            border-radius: 2px;
-        }
-        
-       
-        .about {
-            background-color: white;
-        }
-        
-        .about-content {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 30px;
-        }
-        
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .about-image {
-            flex: 1;
-            min-width: 300px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        
-        .about-image:hover {
-            transform: scale(1.02);
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-       
-        .barangays {
-            background-color: #f8f8f8;
-        }
-        
-        .barangays-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .barangay-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .barangay-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .barangay-img {
-            height: 180px;
-            overflow: hidden;
-        }
-        
-        .barangay-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .barangay-card:hover .barangay-img img {
-            transform: scale(1.1);
-        }
-        
-        .barangay-info {
-            padding: 15px;
-            text-align: center;
-        }
-        
-        .barangay-info h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-        
-      
-        .services {
-            background-color: white;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .service-card {
-            background-color: #f8f8f8;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .service-img {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .service-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .service-card:hover .service-img img {
-            transform: scale(1.1);
-        }
-        
-        .service-info {
-            padding: 20px;
-        }
-        
-        .service-info h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-        
-        /* News Section */
-        .news {
-            background-color: #f8f8f8;
-        }
-        
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-        
-        .news-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .news-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .news-img {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .news-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .news-card:hover .news-img img {
-            transform: scale(1.1);
-        }
-        
-        .news-info {
-            padding: 20px;
-        }
-        
-        .news-date {
-            display: block;
-            color: #777;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-        
-        .news-info h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-        
-        .read-more {
-            display: inline-block;
-            margin-top: 10px;
-            color: var(--primary-color);
-            font-weight: 500;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .read-more:hover {
-            color: var(--secondary-color);
-        }
-        
-        
-        .contact {
-            background-color: white;
-        }
-        
-        .contact-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-        
-        .contact-info {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .contact-icon {
-            background-color: var(--primary-color);
-            color: white;
+        .logo-circle img {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            flex-shrink: 0;
         }
         
-        .contact-details h4 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
+        .brand-text h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: -5px;
         }
         
-        .contact-form {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
+        .brand-text p {
+            font-size: 0.85rem;
+            color: var(--text-light);
             font-weight: 500;
         }
         
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-        
-        textarea.form-control {
-            min-height: 120px;
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: background-color 0.3s;
-        }
-        
-        .submit-btn:hover {
-            background-color: var(--secondary-color);
-        }
-        
-        
-        footer {
-            background-color: var(--text-color);
-            color: white;
-            padding: 40px 0 20px;
-        }
-        
-        .footer-container {
+        .nav-menu {
             display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
+            list-style: none;
+            gap: 2.5rem;
         }
         
-        .footer-logo {
-            flex: 1;
-            min-width: 250px;
-        }
-        
-        .footer-logo img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 2px solid white;
-            background-color: white;
-            margin-bottom: 15px;
-        }
-        
-        .footer-links {
-            flex: 1;
-            min-width: 150px;
-        }
-        
-        .footer-links h3 {
-            margin-bottom: 20px;
+        .nav-item a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
             position: relative;
-            padding-bottom: 10px;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
         }
         
-        .footer-links h3:after {
+        .nav-item a::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 40px;
+            width: 0;
             height: 3px;
-            background-color: var(--primary-color);
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+            border-radius: 2px;
         }
         
-        .footer-links ul {
+        .nav-item a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-gradient);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(46, 139, 87, 0.9) 0%, rgba(34, 139, 34, 0.8) 100%), url(Municipality.jpg);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-text {
+            color: white;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #FFFFFF, #F0F8FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--dark-green);
+            transform: translateY(-3px);
+        }
+        
+        .hero-visual {
+            position: relative;
+        }
+        
+        .hero-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .floating-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-soft);
+            backdrop-filter: blur(20px);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-card:nth-child(2) {
+            animation-delay: -3s;
+            transform: translateY(20px);
+        }
+        
+        .floating-card h3 {
+            color: var(--dark-green);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .floating-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 8rem 0;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+        
+        .section-badge {
+            display: inline-block;
+            background: var(--primary-gradient);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* About Section */
+        .about {
+            background: var(--soft-gray);
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        
+        .about-content h3 {
+            font-size: 1.8rem;
+            color: var(--dark-green);
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+        
+        .about-image {
+            position: relative;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        /* Barangays Section */
+        .barangays-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .barangay-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+        }
+        
+        .barangay-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .barangay-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .barangay-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .barangay-card:hover .barangay-image img {
+            transform: scale(1.1);
+        }
+        
+        .barangay-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 100%);
+        }
+        
+        .barangay-info {
+            padding: 2rem;
+        }
+        
+        .barangay-info h3 {
+            font-size: 1.4rem;
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+        }
+        
+        .barangay-info p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Services Section */
+        .services {
+            background: var(--soft-gray);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            border-left: 5px solid transparent;
+        }
+        
+        .service-card:hover {
+            transform: translateX(10px);
+            border-left-color: var(--accent-color);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-gradient);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.4rem;
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+        }
+        
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        /* News Section */
+        .news-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .featured-news {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .featured-image {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .news-badge {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .featured-content {
+            padding: 2.5rem;
+        }
+        
+        .news-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .featured-content h3 {
+            font-size: 1.8rem;
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        .featured-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .read-more-btn {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .read-more-btn:hover {
+            gap: 1rem;
+        }
+        
+        .news-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .news-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+        }
+        
+        .news-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .news-item h4 {
+            color: var(--dark-green);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+        
+        .news-item .news-date {
+            margin-bottom: 0;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: var(--soft-gray);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .contact-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            color: white;
+        }
+        
+        .contact-details h4 {
+            color: var(--dark-green);
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-details p {
+            color: var(--text-light);
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid #E9ECEF;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--cream-white);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--light-green);
+            box-shadow: 0 0 0 3px rgba(129, 199, 132, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 5rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-logo {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .footer-logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        
+        .footer-brand-text h3 {
+            font-size: 1.3rem;
+            margin-bottom: -5px;
+        }
+        
+        .footer-brand-text p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+            color: var(--light-green);
+        }
+        
+        .footer-section ul {
             list-style: none;
         }
         
-        .footer-links ul li {
-            margin-bottom: 10px;
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
         }
         
-        .footer-links ul li a {
-            color: #ddd;
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
         }
         
-        .footer-links ul li a:hover {
+        .footer-section ul li a:hover {
             color: white;
+            padding-left: 0.5rem;
         }
         
         .footer-bottom {
             text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
+            padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
         }
         
-       
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes slideInFromBottom {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        .animate-fade-in {
-            animation: fadeIn 1s ease-in-out;
-        }
-        
-        .animate-slide-in {
-            animation: slideInFromBottom 1s ease-in-out;
-        }
-        
-        
-        @media (max-width: 992px) {
-            .site-title {
-                font-size: 1.3rem;
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
             }
             
-            .hero h1 {
-                font-size: 2.5rem;
+            .hero-title {
+                font-size: 3.5rem;
             }
         }
         
         @media (max-width: 768px) {
-            .nav-links {
+            .nav-menu {
+                position: fixed;
+                top: 100%;
+                left: 0;
                 width: 100%;
+                background: white;
+                flex-direction: column;
+                gap: 0;
+                box-shadow: var(--shadow-soft);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
             }
             
-            .hero {
-                height: 70vh;
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
             }
             
-            .hero h1 {
-                font-size: 2.2rem;
+            .nav-item {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-item a {
+                display: block;
+                padding: 1rem;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .mobile-toggle {
+                display: flex;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
             }
             
             .section-title {
-                font-size: 1.5rem;
+                font-size: 2rem;
+            }
+            
+            .about-grid,
+            .contact-grid,
+            .news-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .cta-buttons {
+                justify-content: center;
+            }
+            
+            .hero-cards {
+                grid-template-columns: 1fr;
             }
         }
         
-        @media (max-width: 576px) {
-            .logo {
-                width: 50px;
-                height: 50px;
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
             }
             
-            .site-title {
-                font-size: 1.1rem;
+            .nav-container {
+                padding: 0 1rem;
             }
             
-            .site-subtitle {
-                font-size: 0.8rem;
+            .hero-title {
+                font-size: 2rem;
             }
             
-            .hero {
-                height: 60vh;
-                margin-top: 96px;
-            }
-            
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .hero-btn {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-            
-            section {
-                padding: 40px 0;
+            .section {
+                padding: 4rem 0;
             }
         }
     </style>
 </head>
 <body>
-    
-    <header>
-        <div class="container header-container">
-            <div class="logo-container">
-                <div class="logo">
-                    <img src="logo.jpg" alt="Municipality of Molave Logo">
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo-section">
+                <div class="logo-circle">
+                    <img src="logo.jpg" alt="Molave Logo">
                 </div>
-                <div>
-                    <div class="site-title">Municipality of Molave</div>
-                    <div class="site-subtitle">Zamboanga Del Sur</div>
+                <div class="brand-text">
+                    <h1>MOLAVE</h1>
+                    <p>Zamboanga del Sur</p>
                 </div>
             </div>
-            <button class="hamburger">&#9776;</button>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#barangays">Barangays</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#news">News</a></li>
-                <li><a href="#contact">Contact</a></li>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="#home">Home</a></li>
+                <li class="nav-item"><a href="#about">About</a></li>
+                <li class="nav-item"><a href="#barangays">Communities</a></li>
+                <li class="nav-item"><a href="#services">Services</a></li>
+                <li class="nav-item"><a href="#news">Updates</a></li>
+                <li class="nav-item"><a href="#contact">Connect</a></li>
             </ul>
+            
+            <div class="mobile-toggle" id="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-    </header>
+    </nav>
     
-     
+    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Welcome to Molave</h1>
-            <p>The Progressive Municipality in the Heart of Zamboanga Del Sur</p>
-            <a href="#about" class="hero-btn">Explore More</a>
-        </div>
-    </section>
-    
-    
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Molave</h2>
-            <div class="about-content">
-                <div class="about-text animate-fade-in">
-                    <p>Molave is a first-class municipality in the province of Zamboanga del Sur, Philippines. It is located in the central part of the province, approximately 29 kilometers east of Pagadian City. The municipality serves as a major commercial center in the eastern part of Zamboanga del Sur.</p>
-                    <p>Founded in 1948, Molave was named after the Molave tree (Vitex parviflora), a native hardwood that was once abundant in the area. The municipality's strategic location has made it a hub for trade and commerce in the region.</p>
-                    <p>Molave is known for its vibrant agricultural economy, with rice, corn, coconut, and rubber as major crops. The municipality is also establishing itself as an educational center with several colleges and universities.</p>
-                    <p>With a population of approximately 50,000 people, Molave is a diverse community that celebrates its rich cultural heritage through various festivals and events throughout the year, including the annual Megayon Festival that showcases the municipality's arts, culture, and agricultural products.</p>
-                    <p>The municipality is led by the local government unit headed by the Municipal Mayor, along with the Vice Mayor and members of the Sangguniang Bayan (Municipal Council).</p>
+            <div class="hero-text">
+                <div class="hero-badge">🌿 Progressive Community</div>
+                <h1 class="hero-title">Discover Beautiful Molave</h1>
+                <p class="hero-subtitle">Where tradition meets progress in the heart of Zamboanga del Sur - A thriving community built on unity, sustainability, and endless possibilities.</p>
+                <div class="cta-buttons">
+                    <a href="#about" class="btn-primary">Explore Our Story</a>
+                    <a href="#services" class="btn-secondary">View Services</a>
                 </div>
-                <div class="about-image animate-slide-in">
-                    <img src="about.jpg" alt="Molave Municipal Hall">
+            </div>
+            
+            <div class="hero-visual">
+                <div class="hero-cards">
+                    <div class="floating-card">
+                        <h3>50,000+</h3>
+                        <p>Proud Residents</p>
+                    </div>
+                    <div class="floating-card">
+                        <h3>25+</h3>
+                        <p>Barangay Communities</p>
+                    </div>
+                    <div class="floating-card">
+                        <h3>Founded</h3>
+                        <p>1948</p>
+                    </div>
+                    <div class="floating-card">
+                        <h3>First Class</h3>
+                        <p>Municipality</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
     
-    
-    <section id="barangays" class="barangays">
+    <!-- About Section -->
+    <section id="about" class="section about">
         <div class="container">
-            <h2 class="section-title">Our Barangays</h2>
+            <div class="section-header">
+                <div class="section-badge">Our Heritage</div>
+                <h2 class="section-title">The Heart of Zamboanga del Sur</h2>
+                <p class="section-subtitle">Molave stands as a beacon of progress and tradition, where natural beauty meets modern development in perfect harmony.</p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>A Legacy of Growth & Unity</h3>
+                    <p>Since 1948, Molave has flourished as a first-class municipality, strategically positioned 29 kilometers east of Pagadian City. Named after the majestic Molave tree, our community embodies strength, resilience, and natural beauty.</p>
+                    
+                    <p>Our agricultural heritage runs deep, with rice, corn, coconut, and rubber cultivation forming the backbone of our economy. Today, we've evolved into a modern educational hub while preserving our cultural roots through vibrant festivals like the annual Megayon celebration.</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">75+</div>
+                            <div class="stat-label">Years of Progress</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">1st</div>
+                            <div class="stat-label">Class Municipality</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">29</div>
+                            <div class="stat-label">Kilometers from Pagadian</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Committed to Excellence</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <img src="/api/placeholder/600/400" alt="Molave Municipality">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Barangays Section -->
+    <section id="barangays" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Our Communities</div>
+                <h2 class="section-title">Vibrant Barangays</h2>
+                <p class="section-subtitle">Explore the diverse communities that make up our beautiful municipality, each with its own unique character and contribution to our collective success.</p>
+            </div>
+            
             <div class="barangays-grid">
-                <div class="barangay-card animate-fade-in">
-                    <div class="barangay-img">
-                        <img src="Barangay Blancia.jpg" alt="Barangay Blancia">
+                <div class="barangay-card">
+                    <div class="barangay-image">
+                        <img src="Baranagay Poblacion.jpg" alt="Barangay Poblacion">
+                        <div class="barangay-overlay"></div>
                     </div>
                     <div class="barangay-info">
-                        <h3>Blancia</h3>
-                        <p>An agricultural barangay known for its rice fields and scenic views.</p>
+                        <h3>Barangay Poblacion</h3>
+                        <p>The heart of Molave, where government offices, commercial establishments, and cultural landmarks converge to create a bustling town center.</p>
                     </div>
                 </div>
                 
-                <div class="barangay-card animate-fade-in">
-                    <div class="barangay-img">
-                        <img src="Barangay Miligan.jpg" alt="Barangay Miligan">
+                <div class="barangay-card">
+                    <div class="barangay-image">
+                        <img src="Barangay Blacia.jpg" alt="Barangay Balintawak">
+                        <div class="barangay-overlay"></div>
                     </div>
                     <div class="barangay-info">
-                        <h3>Miligan</h3>
-                        <p>Home to diverse agricultural products and friendly communities.</p>
+                        <h3>Barangay Balintawak</h3>
+                        <p>Known for its agricultural productivity and scenic rice fields, this barangay exemplifies the rural beauty of our municipality.</p>
                     </div>
                 </div>
                 
-                <div class="barangay-card animate-fade-in">
-                    <div class="barangay-img">
-                        <img src="Barangay Poblacion.jpg" alt="Barangay Poblacion">
+                <div class="barangay-card">
+                    <div class="barangay-image">
+                        <img src="Barangay RizaL.jpg" alt="Barangay San Isidro">
+                        <div class="barangay-overlay"></div>
                     </div>
                     <div class="barangay-info">
-                        <h3>Poblacion</h3>
-                        <p>The central commercial and administrative hub of the municipality.</p>
+                        <h3>Barangay San Isidro</h3>
+                        <p>A thriving community with strong educational institutions and active community organizations promoting local development.</p>
                     </div>
                 </div>
                 
-                <div class="barangay-card animate-fade-in">
-                    <div class="barangay-img">
-                        <img src="Barangay Rizal.jpg" alt="Barangay Rizal">
+                <div class="barangay-card">
+                    <div class="barangay-image">
+                        <img src="Barangay Saguife.jpg" alt="Barangay Crossing Rubber">
+                        <div class="barangay-overlay"></div>
                     </div>
                     <div class="barangay-info">
-                        <h3>Rizal</h3>
-                        <p>Named after the national hero, known for its educational institutions.</p>
+                        <h3>Barangay Crossing Rubber</h3>
+                        <p>A major agricultural hub specializing in rubber cultivation, contributing significantly to our local economy.</p>
                     </div>
                 </div>
                 
-                <div class="barangay-card animate-fade-in">
-                    <div class="barangay-img">
-                        <img src="Barangay Saguife.jpg" alt="Barangay Saguife">
+                <div class="barangay-card">
+                    <div class="barangay-image">
+                        <img src="Barangay Lower Dioyo.jpg" alt="Barangay Libertad">
+                        <div class="barangay-overlay"></div>
                     </div>
                     <div class="barangay-info">
-                        <h3>Saguife</h3>
-                        <p>A rural barangay with rich cultural heritage and traditions.</p>
+                        <h3>Barangay Libertad</h3>
+                        <p>Celebrating freedom and progress, this community showcases the entrepreneurial spirit of our residents.</p>
                     </div>
                 </div>
                 
-                <div class="barangay-card animate-fade-in">
-                    <div class="barangay-img">
-                        <img src="Barangay Silangit.jpg" alt="Barangay Silangit">
+                <div class="barangay-card">
+                    <div class="barangay-image">
+                        <img src="Barangay Silangit.jpg" alt="Barangay Lower Lamac">
+                        <div class="barangay-overlay"></div>
                     </div>
                     <div class="barangay-info">
-                        <h3>Silangit</h3>
-                        <p>Known for its natural resources and eco-tourism potential.</p>
+                        <h3>Barangay Lower Lamac</h3>
+                        <p>Rich in natural resources and blessed with fertile soil, making it perfect for diverse agricultural activities.</p>
                     </div>
-                </div>
-                
-                <div class="barangay-card animate-fade-in">
-                    <div class="barangay-img">
-                        <img src="Barangay Lower Dioyo.jpg" alt="Barangay Lower Dioyo">
-                    </div>
-                    <div class="barangay-info">
-                        <h3>Lower Dioyo</h3>
-                        <p>A progressive agricultural community with hardworking residents.</p>
-                    </div>
-                </div>
-                
-                <div class="barangay-card animate-fade-in">
-                    <div class="barangay-img">
-                        <img src="Barangay Upper Dimorok.jpg" alt="Barangay Upper Dimorok">
-                    </div>
-                    <div class="barangay-info">
-                        <h3>Upper Dimorok</h3>
-                        <p>Located in the highlands with cooler climate and beautiful landscapes.</p>
-                    </div>
-                </div>
                 </div>
             </div>
         </div>
     </section>
     
-     
-    <section id="services" class="services">
+    <!-- Services Section -->
+    <section id="services" class="section services">
         <div class="container">
-            <h2 class="section-title">Municipal Services</h2>
+            <div class="section-header">
+                <div class="section-badge">Public Services</div>
+                <h2 class="section-title">Serving Our Community</h2>
+                <p class="section-subtitle">Comprehensive services designed to meet the needs of our residents and support the growth of our municipality.</p>
+            </div>
+            
             <div class="services-grid">
-                <div class="service-card animate-fade-in">
-                    <div class="service-img">
-                        <img src="Business Permits and Licensing.jpg" alt="Business Permits and Licensing">
-                    </div>
-                    <div class="service-info">
-                        <h3>Business Permits and Licensing</h3>
-                        <p>The Municipality of Molave provides efficient processing of business permits, licenses, and other related documents. Our Business Permits and Licensing Office (BPLO) is committed to providing quality service to all business owners in the municipality.</p>
-                        <p>Business Hours: Monday to Friday, 8:00 AM to 5:00 PM</p>
-                    </div>
+                <div class="service-card">
+                    <div class="service-icon">🏛️</div>
+                    <h3>Civil Registry Services</h3>
+                    <p>Complete birth, death, and marriage certificate processing with efficient and reliable service delivery.</p>
                 </div>
                 
-                <div class="service-card animate-fade-in">
-                    <div class="service-img">
-                        <img src="Civil Registry.jpg" alt="Civil Registry">
-                    </div>
-                    <div class="service-info">
-                        <h3>Civil Registry</h3>
-                        <p>The Municipal Civil Registry Office manages and records vital statistics including births, deaths, marriages, and other civil registry documents. We ensure that all records are well-maintained and accessible to citizens when needed.</p>
-                        <p>Available Services: Birth Certificate, Marriage Certificate, Death Certificate, CENOMAR, and other civil registry documents.</p>
-                    </div>
+                <div class="service-card">
+                    <div class="service-icon">🏗️</div>
+                    <h3>Building & Permits</h3>
+                    <p>Streamlined building permit applications and construction oversight to ensure safe and compliant development.</p>
                 </div>
                 
-                <div class="service-card animate-fade-in">
-                    <div class="service-img">
-                        <img src="Health Services.jpg" alt="Health Services">
-                    </div>
-                    <div class="service-info">
-                        <h3>Health Services</h3>
-                        <p>The Municipal Health Office provides comprehensive health services to residents, including medical consultations, maternal and child health care, immunization, and nutrition programs. Our team of healthcare professionals is dedicated to ensuring the well-being of the entire community.</p>
-                        <p>Regular Health Programs: Immunization, Maternal Care, Dental Services, Nutrition Programs, and more.</p>
-                    </div>
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3>Treasury Services</h3>
+                    <p>Tax collection, business permit processing, and financial services to support local enterprises and development.</p>
                 </div>
                 
-                <div class="service-card animate-fade-in">
-                    <div class="service-img">
-                        <img src="Agriculture Support.jpg" alt="Agriculture Support">
-                    </div>
-                    <div class="service-info">
-                        <h3>Agriculture Support</h3>
-                        <p>The Municipal Agriculture Office provides technical assistance, resources, and support to farmers and agricultural workers. We offer various programs aimed at improving agricultural productivity, sustainability, and income generation.</p>
-                        <p>Programs: Farm Input Subsidies, Technical Training, Market Linkages, and Crop Insurance Assistance.</p>
-                    </div>
+                <div class="service-card">
+                    <div class="service-icon">🌱</div>
+                    <h3>Agricultural Support</h3>
+                    <p>Technical assistance, training programs, and resource support for farmers and agricultural cooperatives.</p>
                 </div>
                 
-                <div class="service-card animate-fade-in">
-                    <div class="service-img">
-                        <img src="Social Welfare Services.jpg" alt="Social Welfare Services">
-                    </div>
-                    <div class="service-info">
-                        <h3>Social Welfare Services</h3>
-                        <p>The Municipal Social Welfare and Development Office provides various social welfare programs and services to vulnerable sectors including children, elderly, persons with disabilities, and families in need. We aim to improve the quality of life of our constituents through our support programs.</p>
-                        <p>Services: Financial Assistance, Relief Operations, Community Development, and Livelihood Programs.</p>
-                    </div>
+                <div class="service-card">
+                    <div class="service-icon">🏥</div>
+                    <h3>Health Services</h3>
+                    <p>Comprehensive healthcare programs including preventive care, maternal health, and community health initiatives.</p>
                 </div>
                 
-                <div class="service-card animate-fade-in">
-                    <div class="service-img">
-                        <img src="Education Support.jpg" alt="Education Support">
-                    </div>
-                    <div class="service-info">
-                        <h3>Education Support</h3>
-                        <p>The municipality actively supports educational initiatives through scholarships, school facilities improvement, and educational assistance programs. We believe that education is key to the development of our community.</p>
-                        <p>Programs: Municipal Scholarship Program, School Supplies Distribution, and Educational Infrastructure Support.</p>
-                    </div>
+                <div class="service-card">
+                    <div class="service-icon">📚</div>
+                    <h3>Education Support</h3>
+                    <p>Scholarship programs, school infrastructure development, and educational resource allocation for our students.</p>
                 </div>
             </div>
         </div>
     </section>
     
-   
-    <section id="news" class="news">
+    <!-- News Section -->
+    <section id="news" class="section">
         <div class="container">
-            <h2 class="section-title">Latest News</h2>
+            <div class="section-header">
+                <div class="section-badge">Latest Updates</div>
+                <h2 class="section-title">Community News</h2>
+                <p class="section-subtitle">Stay informed about the latest developments, events, and achievements in our municipality.</p>
+            </div>
+            
             <div class="news-grid">
-                <div class="news-card animate-fade-in">
-                    <div class="news-img">
-                        <img src="Infrastructure Development.jpg" alt="Infrastructure Development">
+                <div class="featured-news">
+                    <div class="featured-image">
+                        <img src="/api/placeholder/600/300" alt="Megayon Festival 2024">
+                        <div class="news-badge">Featured</div>
                     </div>
-                    <div class="news-info">
-                        <span class="news-date">May 10, 2025</span>
-                        <h3>New Public Market Construction Underway</h3>
-                        <p>The construction of the new Molave Public Market has officially begun. This modern facility will provide better spaces for vendors and improved shopping experience for residents.</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-                
-                <div class="news-card animate-fade-in">
-                    <div class="news-img">
-                        <img src="Health Program.jpg" alt="Health Program">
-                    </div>
-                    <div class="news-info">
-                        <span class="news-date">May 5, 2025</span>
-                        <h3>Municipality Launches Comprehensive Health Program</h3>
-                        <p>The Municipal Health Office has launched a new health program that aims to provide better healthcare services to all residents, focusing on preventive care and health education.</p>
-                        <a href="#" class="read-more">Read More</a>
+                    <div class="featured-content">
+                        <div class="news-date">May 15, 2025</div>
+                        <h3>Megayon Festival 2025: A Grand Celebration of Culture and Heritage</h3>
+                        <p>Our annual Megayon Festival returns with spectacular performances, cultural showcases, and community activities that celebrate the rich heritage of Molave. Join us for three days of music, dance, food, and traditions.</p>
+                        <a href="#" class="read-more-btn">Read More →</a>
                     </div>
                 </div>
                 
-                <div class="news-card animate-fade-in">
-                    <div class="news-img">
-                        <img src="Agricultural Support.jpg" alt="Agricultural Support">
+                <div class="news-sidebar">
+                    <div class="news-item">
+                        <h4>New Agricultural Training Center Opens</h4>
+                        <div class="news-date">May 10, 2025</div>
                     </div>
-                    <div class="news-info">
-                        <span class="news-date">April 28, 2025</span>
-                        <h3>Farmers Receive Agricultural Support</h3>
-                        <p>The Municipal Agriculture Office distributed farming inputs and equipment to local farmers as part of the municipality's commitment to boost agricultural productivity.</p>
-                        <a href="#" class="read-more">Read More</a>
+                    
+                    <div class="news-item">
+                        <h4>Infrastructure Development Program Launches</h4>
+                        <div class="news-date">May 8, 2025</div>
                     </div>
-                </div>
-                
-                <div class="news-card animate-fade-in">
-                    <div class="news-img">
-                        <img src="Education Award.jpg" alt="Education Award">
+                    
+                    <div class="news-item">
+                        <h4>Youth Leadership Summit 2025</h4>
+                        <div class="news-date">May 5, 2025</div>
                     </div>
-                    <div class="news-info">
-                        <span class="news-date">April 20, 2025</span>
-                        <h3>Molave Recognized for Educational Excellence</h3>
-                        <p>The Municipality of Molave received recognition from the Department of Education for its outstanding support to educational programs and initiatives in the community.</p>
-                        <a href="#" class="read-more">Read More</a>
+                    
+                    <div class="news-item">
+                        <h4>Health and Wellness Campaign</h4>
+                        <div class="news-date">May 3, 2025</div>
                     </div>
-                </div>
-                
-                <div class="news-card animate-fade-in">
-                    <div class="news-img">
-                        <img src="Cultural Festival.jpg" alt="Cultural Festival">
-                    </div>
-                    <div class="news-info">
-                        <span class="news-date">April 15, 2025</span>
-                        <h3>Annual Megayon Festival Preparations Begin</h3>
-                        <p>Preparations for the annual Megayon Festival are now in full swing. This year's celebration promises to be grander with more cultural performances and activities.</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-                
-                <div class="news-card animate-fade-in">
-                    <div class="news-img">
-                        <img src="Environmental Initiative.jpg" alt="Environmental Initiative">
-                    </div>
-                    <div class="news-info">
-                        <span class="news-date">April 8, 2025</span>
-                        <h3>Municipality Launches Environmental Protection Campaign</h3>
-                        <p>The Municipality of Molave has launched a comprehensive environmental protection campaign that includes tree planting, waste management, and ecological awareness programs.</p>
-                        <a href="#" class="read-more">Read More</a>
+                    
+                    <div class="news-item">
+                        <h4>Environmental Conservation Initiative</h4>
+                        <div class="news-date">May 1, 2025</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     
-   
-    <section id="contact" class="contact">
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
         <div class="container">
-            <h2 class="section-title">Contact Us</h2>
-            <div class="contact-content">
+            <div class="section-header">
+                <div class="section-badge">Get in Touch</div>
+                <h2 class="section-title">Connect With Us</h2>
+                <p class="section-subtitle">We're here to serve you. Reach out to us for inquiries, feedback, or assistance with municipal services.</p>
+            </div>
+            
+            <div class="contact-grid">
                 <div class="contact-info">
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i>📍</i>
-                        </div>
+                        <div class="contact-icon">📍</div>
                         <div class="contact-details">
-                            <h4>Location</h4>
-                            <p>Municipal Hall, Poblacion, Molave, Zamboanga del Sur, Philippines</p>
+                            <h4>Visit Our Office</h4>
+                            <p>Municipal Hall, Poblacion<br>Molave, Zamboanga del Sur<br>Philippines 7023</p>
                         </div>
                     </div>
                     
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i>📞</i>
-                        </div>
+                        <div class="contact-icon">📞</div>
                         <div class="contact-details">
-                            <h4>Phone</h4>
-                            <p>+63 (XXX) XXX-XXXX</p>
+                            <h4>Call Us</h4>
+                            <p>Telephone: (065) 555-0123<br>Mobile: +63 917 123 4567<br>Fax: (065) 555-0124</p>
                         </div>
                     </div>
                     
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i>✉️</i>
-                        </div>
+                        <div class="contact-icon">✉️</div>
                         <div class="contact-details">
-                            <h4>Email</h4>
-                            <p>info@molave.gov.ph</p>
+                            <h4>Email Us</h4>
+                            <p>info@molave.gov.ph<br>mayor@molave.gov.ph<br>services@molave.gov.ph</p>
                         </div>
                     </div>
                     
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i>⏰</i>
-                        </div>
+                        <div class="contact-icon">🕐</div>
                         <div class="contact-details">
                             <h4>Office Hours</h4>
-                            <p>Monday to Friday: 8:00 AM - 5:00 PM</p>
+                            <p>Monday - Friday: 8:00 AM - 5:00 PM<br>Saturday: 8:00 AM - 12:00 PM<br>Sunday: Closed</p>
                         </div>
                     </div>
                 </div>
@@ -1018,147 +1236,154 @@
                 <div class="contact-form">
                     <form>
                         <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" class="form-control" placeholder="Enter your name">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <input type="email" id="email" class="form-control" placeholder="Enter your email">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="subject">Subject</label>
-                            <input type="text" id="subject" class="form-control" placeholder="Enter subject">
+                            <input type="text" id="subject" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" class="form-control" placeholder="Enter your message"></textarea>
+                            <textarea id="message" class="form-control" required></textarea>
                         </div>
                         
-                        <button type="submit" class="submit-btn">Send Message</button>
+                        <button type="submit" class="btn-primary">Send Message</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
     
-   
-    <footer>
-        <div class="container footer-container">
-            <div class="footer-logo">
-                <img src="logo.jpg" alt="Municipality of Molave Logo">
-                <p>Municipality of Molave</p>
-                <p>The Progressive Municipality in the Heart of Zamboanga Del Sur</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <img src="/api/placeholder/40/40" alt="Molave Logo">
+                        </div>
+                        <div class="footer-brand-text">
+                            <h3>MOLAVE</h3>
+                            <p>Zamboanga del Sur</p>
+                        </div>
+                    </div>
+                    <p>A progressive first-class municipality committed to sustainable development, community welfare, and preserving our rich cultural heritage for future generations.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#barangays">Barangays</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#news">News</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Civil Registry</a></li>
+                        <li><a href="#">Building Permits</a></li>
+                        <li><a href="#">Business Permits</a></li>
+                        <li><a href="#">Tax Services</a></li>
+                        <li><a href="#">Health Services</a></li>
+                        <li><a href="#">Agricultural Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">YouTube</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                    </ul>
+                </div>
             </div>
             
-            <div class="footer-links">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#barangays">Barangays</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#news">News</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-links">
-                <h3>Services</h3>
-                <ul>
-                    <li><a href="#services">Business Permits</a></li>
-                    <li><a href="#services">Civil Registry</a></li>
-                    <li><a href="#services">Health Services</a></li>
-                    <li><a href="#services">Agriculture Support</a></li>
-                    <li><a href="#services">Social Welfare</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-links">
-                <h3>Connect With Us</h3>
-                <ul>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">YouTube</a></li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <div class="container">
-                <p>&copy; 2025 Municipality of Molave. All Rights Reserved.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Municipality of Molave, Zamboanga del Sur. All rights reserved. | Designed with ❤️ for our community</p>
             </div>
         </div>
     </footer>
     
-   
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const hamburger = document.querySelector('.hamburger');
-            const navLinks = document.querySelector('.nav-links');
-            
-            hamburger.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-            });
-            
-          
-            document.addEventListener('click', function(event) {
-                if (!event.target.closest('.hamburger') && !event.target.closest('.nav-links')) {
-                    navLinks.classList.remove('active');
-                }
-            });
-            
-           
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                       
-                        navLinks.classList.remove('active');
-                        
-                        
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 106,  
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            
-            const animateElements = document.querySelectorAll('.animate-fade-in, .animate-slide-in');
-            
-            function checkIfInView() {
-                animateElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const windowHeight = window.innerHeight;
-                    
-                    if (elementTop < windowHeight - 100) {
-                        element.style.opacity = '1';
-                        element.style.transform = 'translateY(0)';
-                    }
-                });
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
-            
-            
-            animateElements.forEach(element => {
-                element.style.opacity = '0';
-                if (element.classList.contains('animate-slide-in')) {
-                    element.style.transform = 'translateY(50px)';
+        });
+        
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    navMenu.classList.remove('active');
                 }
-                element.style.transition = 'opacity 1s ease-in-out, transform 1s ease-in-out';
             });
-            
-          
-            window.addEventListener('load', checkIfInView);
-            window.addEventListener('scroll', checkIfInView);
+        });
+        
+        // Form submission
+        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.floating-card, .barangay-card, .service-card, .news-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
         });
     </script>
 </body>
